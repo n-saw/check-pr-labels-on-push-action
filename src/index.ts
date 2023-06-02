@@ -14,19 +14,27 @@ async function run() {
   const labels = getInputLabels();
   core.debug(`Input labels: ${labels}`);
 
-  core.setOutput("labels", labels);
   const resultMatchEvery = labels.every(
     (label) => labelNames.findIndex((value) => label === value) >= 0
   );
   core.debug(`resultMatchEvery: ${resultMatchEvery}`);
-  core.setOutput("resultMatchEvery", resultMatchEvery);
   const resultMatchAny = labels.any(
     (label) => labelNames.findIndex((value) => label === value) >= 0
-  );
+  ); 
   core.debug(`resultMatchAny: ${resultMatchAny}`);
-  core.setOutput("resultMatchAny", resultMatchAny);
+ 
+  const results = {
+  labels: labels,
+  resultMatchEvery: resultMatchEvery,
+  resultMatchAny: resultMatchAny
+  };
 
-  core.debug("End");
+const jsonString = JSON.stringify(results);
+core.debug(`Results JSON string: ${jsonString}`);
+
+
+
+core.debug("End");
 }
 
 async function getPullRequestLabelNames(
