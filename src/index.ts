@@ -14,10 +14,15 @@ async function run() {
   const labels = getInputLabels();
   core.debug(`Input labels: ${labels}`);
 
-  const result = labels.every(
+  core.setOutput("labels", labels);
+  const resultMatchEvery = labels.every(
     (label) => labelNames.findIndex((value) => label === value) >= 0
   );
-  core.setOutput("result", result);
+  core.setOutput("resultMatchEvery", resultMatchEvery);
+  const resultMatchAny = labels.any(
+    (label) => labelNames.findIndex((value) => label === value) >= 0
+  );
+  core.setOutput("resultMatchAny", resultMatchAny);
 
   core.debug("End");
 }
