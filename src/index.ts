@@ -18,10 +18,12 @@ async function run() {
   const resultMatchEvery = labels.every(
     (label) => labelNames.findIndex((value) => label === value) >= 0
   );
+  core.debug(`resultMatchEvery: ${resultMatchEvery}`);
   core.setOutput("resultMatchEvery", resultMatchEvery);
   const resultMatchAny = labels.any(
     (label) => labelNames.findIndex((value) => label === value) >= 0
   );
+  core.debug(`resultMatchAny: ${resultMatchAny}`);
   core.setOutput("resultMatchAny", resultMatchAny);
 
   core.debug("End");
