@@ -18,15 +18,15 @@ async function run() {
     (label) => labelNames.findIndex((value) => label === value) >= 0
   );
   core.debug(`resultMatchEvery: ${resultMatchEvery}`);
-  const resultMatchAny = labels.any(
+  const resultMatchSome = labels.some(
     (label) => labelNames.findIndex((value) => label === value) >= 0
   ); 
-  core.debug(`resultMatchAny: ${resultMatchAny}`);
+  core.debug(`resultMatchSome: ${resultMatchSome}`);
  
   const results = {
   labels: labels,
   resultMatchEvery: resultMatchEvery,
-  resultMatchAny: resultMatchAny
+  resultMatchSome: resultMatchSome
   };
 
 const jsonString = JSON.stringify(results);
