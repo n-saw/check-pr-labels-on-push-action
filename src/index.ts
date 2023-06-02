@@ -31,6 +31,7 @@ async function run() {
 
 const jsonString = JSON.stringify(results);
 core.debug(`Results JSON string: ${jsonString}`);
+core.setOutput("results", results);
 
 
 
